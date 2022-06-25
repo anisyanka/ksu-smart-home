@@ -96,3 +96,11 @@ ssh pi@192.168.1.55
 ```
 But it still requered to type password every time you want to access.
 To avoid this just [generate](https://danidudas.medium.com/how-to-connect-to-raspberry-pi-via-ssh-without-password-using-ssh-keys-3abd782688a) RSA ssh key and put public part to `~/.ssh/authorized_keys`
+
+
+## Install and run Home Assistant (HASS)
+Carefully do [this](https://www.home-assistant.io/installation/raspberrypi#install-home-assistant-core).
+After that we can reach the server with the help of:
+```
+http://192.168.1.1:8123
+```
