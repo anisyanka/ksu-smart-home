@@ -59,3 +59,40 @@ Then remove `init=/bin/sh` from cmdline.
  ```
 
 If you want to see kernel messages during boot process, remove the word `quiet` in the `cmdline.txt` file to allow display of boot activity.
+
+
+## Set Wi-Fi password and SSH connection to the board without monitors
+If you don't have access to GUI, you can setup netwotk using [command line](https://www.raspberrypi.com/documentation/computers/configuration.html#using-the-command-line) and `raspi-config`.
+```
+# Generate encrypted password to connect to Wi-Fi
+$ wpa_passphrase <SSID> <PASSWORD>
+
+$ sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
+network={
+	ssid="ssid"
+	psk=encrypted-password
+}
+
+$ sudo reboot
+```
+Also, it is better to make a static IP for RPI. It is convinient to reach Raspberry Pi on the same address in your own LAN, if you often do use SSH to the board in your local LAN. Add RPI's `/etc/dhcpcd.conf` this:
+```
+$ sudo vim /etc/dhcpcd.conf
+
+interface wlan0
+request 192.168.1.55
+```
+Request the address in the DHCP DISCOVER message. There is no guarantee this is the address the DHCP server will actually give. If no address is given then the first address currently assigned to the interface is used.
+It should be work. Once booting finished, but you have no ssh access to a board, find out it new IP with the help of:
+```
+nmap -sn 192.168.1.0/24
+```
+If you do really need static IP, read [this](https://www.ionos.com/digitalguide/server/configuration/provide-raspberry-pi-with-a-static-ip-address/) abd [this](https://raspberrypi.stackexchange.com/questions/37920/how-do-i-set-up-networking-wifi-static-ip-address-on-raspbian-raspberry-pi-os/74428#74428).
+
+SSH access is might be setup by the raspi-config [tool](https://phoenixnap.com/kb/enable-ssh-raspberry-pi#ftoc-heading-4).
+After this you are able to get access to the board with the help of:
+```
+ssh pi@192.168.1.55
+```
+But it still requered to type password every time you want to access.
+To avoid this just [generate](https://danidudas.medium.com/how-to-connect-to-raspberry-pi-via-ssh-without-password-using-ssh-keys-3abd782688a) RSA ssh key and put public part to `~/.ssh/authorized_keys`
