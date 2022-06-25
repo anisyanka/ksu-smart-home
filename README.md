@@ -25,3 +25,37 @@ $ rpi-imager
 ```
 
 After image have been flashed to SD card, you can seek for `config.txt` and cmdline.txt files on it. It is files for bootloader to config the Linux kernel and command line string.
+
+
+## Turn on UART on RPI and first headless login
+Attach USB-UART converter to laptop and find out what device has appeared using `dmesg`. For instance, `/dev/ttuUSB0`. And then:
+ - To enable UART output add the option `enable_uart=1` at the end of `/boot/config.txt`.
+ - Check what the baudrate for UART is in `cmdline.txt`.
+
+```sh
+ $ sudo apt-get install tio putty
+ $ sudo chmod 666 /dev/ttyUSB0
+ $ tio /dev/ttyUSB0 -b 115200
+
+ # Or with GUI
+ $ putty
+```
+ Wait for the board boot will be finished and log in with these defaults:
+ ```
+ Username: pi
+ Password: raspberry
+ ```
+**Lessons learned:**
+ - Remove `console=tty1` phrase from `cmdline.txt` if you want to use consol over UART. `cmdline` should look like: `console=serial0,115200 root=PARTUUID=fc181407-02 rootfstype=ext4 fsck.repair=yes rootwait`
+
+ - If the default password is not working, add `init=/bin/sh` to the cmdline and than remount fs as RW and change password for `pi` user. See more [this](https://windowsreport.com/raspberry-pi-password-not-working/).
+ ```
+# mount -o remount, rw / 
+# passwd pi
+# sync
+# exec /sbin/init
+
+Then remove `init=/bin/sh` from cmdline.
+ ```
+
+If you want to see kernel messages during boot process, remove the word `quiet` in the `cmdline.txt` file to allow display of boot activity.
