@@ -104,3 +104,43 @@ After that we can reach the server with the help of:
 ```
 http://192.168.1.1:8123
 ```
+
+
+## Autostart using systemd
+Create `/etc/systemd/system/homeassistant.service` file in RPI or send to it with `scp`:
+```
+[Unit]
+Description=Home Assistant
+After=network-online.target
+
+[Service]
+Type=simple
+User=homeassistant
+WorkingDirectory=/home/homeassistant/.homeassistant
+ExecStart=/srv/homeassistant/bin/hass -c "/home/homeassistant/.homeassistant"
+RestartForceExitStatus=100
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
+```
+
+```
+# Reload the service files to include the new service.
+$ sudo systemctl daemon-reload
+
+# Start/stop your service
+$ sudo systemctl start/stop your-service.service
+
+# To check the status of your service
+$ sudo systemctl status example.service
+
+
+# To enable your service on every reboot
+$ sudo systemctl enable example.service
+
+# To disable your service on every reboot
+$ sudo systemctl disable example.service
+```
+Read more [here](https://www.shubhamdipt.com/blog/how-to-create-a-systemd-service-in-linux/) and [here](https://community.home-assistant.io/t/autostart-using-systemd/199497).
