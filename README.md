@@ -130,12 +130,14 @@ WantedBy=multi-user.target
 # Reload the service files to include the new service.
 $ sudo systemctl daemon-reload
 
-# Start/stop your service
-$ sudo systemctl start/stop your-service.service
+# Start/stop/restart your service
+$ sudo systemctl start/stop/restart your-service
 
 # To check the status of your service
 $ sudo systemctl status example.service
 
+# To obtain service logs
+$ sudo journalctl -u  homeassistant.service
 
 # To enable your service on every reboot
 $ sudo systemctl enable example.service
