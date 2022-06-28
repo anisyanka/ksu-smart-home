@@ -7,9 +7,9 @@ This project and clues are used to quickly deploy own smart home assistant based
 
 
 ## Deploy RPI and Home Assistant image
-Learn what you shold buy and install to deploy Home Assistant here - [Install Home Assistant Operating System](https://www.home-assistant.io/installation/raspberrypi). In the previous link you can find how to install image with the Home Assistant core already installed. You just have to flash SD card with them, but it lookS like you can't run it without hdmi-display for RPI.
+Learn what you shold buy and install to deploy Home Assistant here - [Install Home Assistant Operating System](https://www.home-assistant.io/installation/raspberrypi). In the previous link you can find how to install image with the Home Assistant core already installed. You just have to flash SD card with them, but it looks like you can't run it without hdmi-display for RPI.
 
-In my case I have no it and I need to control the board over UART for the first booting time and then only over SSH via Wi-Fi.
+In my case I have no displays and I need to control the board over UART for the first booting time and then only over SSH via Wi-Fi.
 Therefore in my case I am going to install the [Raspberry Pi OS](https://www.raspberrypi.com/software/) (image without preinstalled apps) and the Home Assistant core by [hand](https://www.home-assistant.io/installation/raspberrypi#install-home-assistant-core).
 
 Install prerequisites libs on your Linux machine and flash a SD card:
@@ -102,7 +102,7 @@ To avoid this just [generate](https://danidudas.medium.com/how-to-connect-to-ras
 Carefully do [this](https://www.home-assistant.io/installation/raspberrypi#install-home-assistant-core).
 After that we can reach the server with the help of:
 ```
-http://192.168.1.1:8123
+http://192.168.1.55:8123
 ```
 
 
@@ -146,3 +146,4 @@ $ sudo systemctl enable example.service
 $ sudo systemctl disable example.service
 ```
 Read more [here](https://www.shubhamdipt.com/blog/how-to-create-a-systemd-service-in-linux/) and [here](https://community.home-assistant.io/t/autostart-using-systemd/199497).
+
