@@ -147,3 +147,6 @@ $ sudo systemctl disable example.service
 ```
 Read more [here](https://www.shubhamdipt.com/blog/how-to-create-a-systemd-service-in-linux/) and [here](https://community.home-assistant.io/t/autostart-using-systemd/199497).
 
+
+## Setup ZigBee Coordinator
+For now, I was trying to setup only [Conbee II](https://phoscon.de/en/conbee2), therefore the next words are only about it. Before start you must update the firmware of the stick and then you are able to start to add some ZigBee devices via the **Conbee**. Otherwise butt pain will wait for you. To update the FW, use [this](https://github.com/dresden-elektronik/deconz-rest-plugin/wiki/Update-deCONZ-manually#update-in-ubuntu-or-debian) guide.
