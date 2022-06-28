@@ -6,6 +6,15 @@ This project and clues are used to quickly deploy own smart home assistant based
 [Raspberry Pi 4](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/) and [Home Assistant](https://www.home-assistant.io/).
 
 
+## Table of contents
+ - [Deploy RPI and Home Assistant image](#deploy-rpi-and-home-assistant-image)
+ - [Turn on UART on RPI and first headless login](#turn-on-uart-on-rpi-and-first-headless-login)
+ - [Set Wi-Fi password and SSH connection to the board without monitors](#set-wi-fi-password-and-ssh-connection-to-the-board-without-monitors)
+ - [Install and run Home Assistant (HASS)](#install-and-run-home-assistant-hass)
+ - [Autostart using systemd](#autostart-using-systemd)
+ - [Setup ZigBee Coordinator](#setup-zigbee-coordinator)
+
+
 ## Deploy RPI and Home Assistant image
 Learn what you shold buy and install to deploy Home Assistant here - [Install Home Assistant Operating System](https://www.home-assistant.io/installation/raspberrypi). In the previous link you can find how to install image with the Home Assistant core already installed. You just have to flash SD card with them, but it looks like you can't run it without hdmi-display for RPI.
 
