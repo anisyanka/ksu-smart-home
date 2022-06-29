@@ -140,19 +140,19 @@ WantedBy=multi-user.target
 $ sudo systemctl daemon-reload
 
 # Start/stop/restart your service
-$ sudo systemctl start/stop/restart your-service
+$ sudo systemctl start/stop/restart homeassistant
 
 # To check the status of your service
-$ sudo systemctl status example.service
+$ sudo systemctl status homeassistant
 
 # To obtain service logs
 $ sudo journalctl -u  homeassistant.service
 
 # To enable your service on every reboot
-$ sudo systemctl enable example.service
+$ sudo systemctl enable homeassistant
 
 # To disable your service on every reboot
-$ sudo systemctl disable example.service
+$ sudo systemctl disable homeassistant
 ```
 Read more [here](https://www.shubhamdipt.com/blog/how-to-create-a-systemd-service-in-linux/) and [here](https://community.home-assistant.io/t/autostart-using-systemd/199497).
 
